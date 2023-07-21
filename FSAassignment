@@ -365,7 +365,95 @@ public class Main {
 }
 
 7.
+class Solution {
+    public String longestPalindrome(String s) {
+
+        String ans = "";
+        
+        for(int i=0; i<s.length(); i++){
+             int low = i, high = i;
+             while(low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)){
+                 if(ans.length() < high-low+1){
+                     ans = s.substring(low, high+1);
+                 }
+                low--;
+                high++;
+             }
+             low = i;
+             high = i+1;
+            while(low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)){
+                if(ans.length() < high-low+1){
+                    ans = s.substring(low, high+1);
+                }
+                low--;
+                high++;
+            }
+        }
+        return ans;
+        
+    }
+}
+
+
 8.
+import java.util.*;
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            //Complete the code
+            
+            Stack<Character> st = new Stack<>();
+            boolean flag = true;
+            
+            for(int i=0; i<input.length(); i++)
+            {
+                if(input.charAt(i) == '(' || input.charAt(i) == '{' || input.charAt(i) == '[')
+                {
+                    st.push(input.charAt(i));
+                }
+                else
+                {
+                    if(input.charAt(i) == ')' && !st.isEmpty() && st.peek() == '(')
+                    {
+                        st.pop();
+                    }
+                    else if(input.charAt(i) == '}' && !st.isEmpty() && st.peek() == '{')
+                    {
+                        st.pop();
+                    }
+                    else if(input.charAt(i) == ']' && !st.isEmpty() && st.peek() == '[')
+                    {
+                        st.pop();
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                }
+            }
+            
+            if(input.length() == 0)
+            {
+                System.out.println("true");
+            }
+            else if(flag == true && st.size() == 0)
+            {
+                System.out.println("true");
+            }
+            else
+            {
+                System.out.println("false");
+            }
+        }
+    }
+}
+
+
 9.
 import java.util.*;
     public class test {
@@ -397,3 +485,106 @@ import java.util.*;
             System.out.println(c);
         }
     } 
+
+10.
+class Student {
+    private final int id;
+    private final String name;
+    private final double cgpa;
+
+    public Student(int id, String name, double cgpa) {
+        this.id = id;
+        this.name = name;
+        this.cgpa = cgpa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getCgpa() {
+        return cgpa;
+    }
+}
+
+class Priorities {
+    public List<Student> getStudents(List<String> events) {
+        PriorityQueue<Student> queue = new PriorityQueue<>(
+            Comparator.comparing(Student::getCgpa).reversed()
+                .thenComparing(Student::getName)
+                .thenComparing(Student::getId)
+        );
+        for (String event : events) {
+            String[] parts = event.split("\\s+");
+            if (parts[0].equals("ENTER")) {
+                String name = parts[1];
+                double cgpa = Double.parseDouble(parts[2]);
+                int id = Integer.parseInt(parts[3]);
+                Student student = new Student(id, name, cgpa);
+                queue.add(student);
+            } else if (parts[0].equals("SERVED")) {
+                queue.poll();
+            }
+        }
+        List<Student> students = new ArrayList<>(queue);
+        students.sort(Comparator.comparing(Student::getCgpa).reversed()
+            .thenComparing(Student::getName)
+            .thenComparing(Student::getId)
+        );
+        return students;
+    }
+}
+
+11.
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+
+         if(head == null || head.next == null)   
+        return head;
+        
+        ListNode temp = new ListNode(0);
+        temp.next = head;
+        ListNode curr = temp;
+        
+        while(curr.next != null && curr.next.next != null){
+            ListNode n1 = curr.next;
+            ListNode n2 = curr.next.next;
+            
+            n1.next = n2.next;             
+            curr.next = n2;                
+            curr.next.next = n1;           
+            curr = curr.next.next;    
+    }
+ 
+    return temp.next;
+        
+    }
+}
+
+12.
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+    ListNode curr = head;
+    int count = 0;
+    while (curr != null && count != k) { 
+        curr = curr.next;
+        count++;
+    }
+    if (count == k) { 
+        curr = reverseKGroup(curr, k); 
+        while (count-- > 0) {  
+            ListNode temp = head.next; 
+            head.next = curr;  
+            curr = head; 
+            head = temp; 
+        }
+        head = curr;
+    }
+    return head;
+        
+    }
+}
