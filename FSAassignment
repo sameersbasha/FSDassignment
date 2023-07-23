@@ -28,7 +28,7 @@ public class CumulativeMultipleArray {
         }
     }
 }
-
+________________________________________________________________________________________________
 
 2.
 package arrays;
@@ -67,7 +67,7 @@ public class MissingNumbers {
         System.out.println("Output: " + missingNum2);
     }
 }
-
+______________________________________________________________________________________________________________
 
 
 3.
@@ -103,7 +103,7 @@ public class SingularSocksCount {
         System.out.println("Output: Count of singular socks = " + singularSocksCount);
     }
 }
-
+________________________________________________________________________________________________________________
 4.
 package arrays;
 import java.util.*;
@@ -148,7 +148,7 @@ public static void main(String[] args) {
 
 }
 }
-
+__________________________________________________________________________________________
 5.
 package arrays;
 class Node {
@@ -280,7 +280,7 @@ public class Main {
         mergedList.display();
     }
 }
-
+__________________________________________________________________________________________________
 6.
 package arrays;
 import java.util.HashSet;
@@ -363,7 +363,7 @@ public class Main {
         linkedList.display();
     }
 }
-
+____________________________________________________________________________________________________
 7.
 class Solution {
     public String longestPalindrome(String s) {
@@ -393,7 +393,7 @@ class Solution {
         
     }
 }
-
+_______________________________________________________________________________________________________
 
 8.
 import java.util.*;
@@ -452,7 +452,7 @@ class Solution{
         }
     }
 }
-
+_________________________________________________________________________________________________
 
 9.
 import java.util.*;
@@ -485,7 +485,7 @@ import java.util.*;
             System.out.println(c);
         }
     } 
-
+____________________________________________________________________________________________________
 10.
 class Student {
     private final int id;
@@ -538,6 +538,7 @@ class Priorities {
         return students;
     }
 }
+___________________________________________________________________________________________________
 
 11.
 class Solution {
@@ -564,7 +565,7 @@ class Solution {
         
     }
 }
-
+__________________________________________________________________________________________________
 12.
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
